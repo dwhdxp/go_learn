@@ -1,0 +1,26 @@
+{{ template "base.tmpl" . }}
+    {{ define "content"}}
+        <div> Hello, {{ .u1.Name }} </div>
+        <div> {{ .u1.Gender }} </div>
+        <div> {{ .u1.Age }} </div>
+        {{ with .m1 }}
+            {{ gt .age 18 }}
+                <div> Hello, {{ .name }} </div>
+                <div> {{ .gender }} </div>
+                <div> {{ .age }} </div>
+        {{end}}
+        <h1> 测试嵌套template </h1>
+        <hr>
+            <h2> 引入外部tmpl文件 </h2>
+            {{ template "ul.tmpl" }}
+            <h2> 引入内部定义的tmpl文件 </h2>
+            {{ template "ol.tmpl" }}
+    {{end}}
+
+{{ define "ol.tmpl"}}
+<ol>
+    <li>吃饭</li>
+    <li>睡觉</li>
+    <li>打豆豆</li>
+</ol>
+{{end}}
