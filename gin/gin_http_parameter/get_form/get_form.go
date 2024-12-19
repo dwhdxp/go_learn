@@ -19,9 +19,11 @@ func main() {
 	// POST请求
 	router.POST("/ping/login", func(c *gin.Context) {
 		username := c.PostForm("username")
-		// password := c.PostForm("password")
+		// pssword := c.PostForm("password")
+		msg := c.DefaultPostForm("msg", "welcome to web")
 		c.HTML(http.StatusOK, "index.html", gin.H{
-			"Name": username,
+			"Name":    username,
+			"Message": msg,
 		})
 	})
 
