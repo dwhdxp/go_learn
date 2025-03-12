@@ -8,14 +8,14 @@ import (
 // 切片，类似于"动态数组"
 func main() {
 	// 1.定义：var v_name []type
-	var a []int  // 未初始化，默认值为nil，无底层数组
+	var a []int  // 未初始化，默认值为nil
 	b := []int{} // 声明并初始化为空，值不为nil
 	c := []int{1, 2, 3, 4, 5}
 	fmt.Printf("a=%v b=%v c=%v\n", a, b, c)
 	fmt.Printf("a_type=%v b_type=%v c_type=%v\n", a, b, c)
+	// 和nil比较判断一个切片是否初始化，但不能判断是否为空
 	fmt.Println(a == nil)
-
-	fmt.Println(b == nil) // false，判断一个切片为空时，不能和nil比较
+	fmt.Println(b == nil)
 	// fmt.Println(c == b)  error 切片是引用类型，不能直接比较，只能跟nil比较
 
 	// 长度、容量：len() cap()
