@@ -1,5 +1,5 @@
 /*
-1.channel是一种特殊类型，类型消息队列FIFO，用于多个goroutine 之间通信，同时也起到一定同步效果；
+1.channel是一种特殊类型，类似消息队列FIFO，用于多个goroutine 之间通信，同时也起到一定同步效果；
 2.channel未初始化默认值为nil
 */
 package main
@@ -13,7 +13,7 @@ func main() {
 	/*
 		创建一个无缓存channel：make(chan type)
 		无缓冲channel(同步通道)：要求发送goroutine和接收goroutine同时准备好，才能完成发送和接收操作，
-													  否则channel会阻塞先执行操作的goroutine，直至另一个goroutine也执行操作。
+					   否则channel会阻塞先执行操作的goroutine，直至另一个goroutine也执行操作。
 	*/
 	ch := make(chan int)
 
