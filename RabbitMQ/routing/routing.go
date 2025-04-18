@@ -7,7 +7,7 @@ import (
 )
 
 // url地址：amqp://用户名:密码@IP地址:端口号/vhost
-const MQURL = "amqp://xp:123456@127.0.0.1:5672/dxp"
+const MQURL = "amqp://username:password@ip:5672/vhost"
 
 type RabbitMQ struct {
 	conn    *amqp.Connection
@@ -103,7 +103,7 @@ func (r *RabbitMQ) ConsumeRouting() {
 		nil,
 	)
 	if err != nil {
-		r.failOnError(err, "PublishPubSub failed to declare a exchange")
+		r.failOnError(err, "ConsumeRouting failed to declare a exchange")
 	}
 
 	// 2.尝试创建队列，并绑定到交换机
@@ -121,7 +121,7 @@ func (r *RabbitMQ) ConsumeRouting() {
 		nil,
 	)
 	if err != nil {
-		r.failOnError(err, "ConsumePubSub failed to declare a queue")
+		r.failOnError(err, "ConsumeRouting failed to declare a queue")
 	}
 
 	// 绑定到exchange
@@ -149,7 +149,7 @@ func (r *RabbitMQ) ConsumeRouting() {
 		nil,
 	)
 	if err != nil {
-		r.failOnError(err, "ConsumePubSub failed to register a consumer")
+		r.failOnError(err, "ConsumeRouting failed to register a consumer")
 	}
 
 	// 3.启用协程处理消息

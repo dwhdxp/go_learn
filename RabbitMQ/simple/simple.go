@@ -1,4 +1,4 @@
-package SimpleMode
+package simple
 
 import (
 	"fmt"
@@ -7,7 +7,7 @@ import (
 )
 
 // url地址：amqp://用户名:密码@IP地址:端口号/vhost
-const MQURL = "amqp://xp:123456@127.0.0.1:5672/dxp"
+const MQURL = "amqp://username:password@ip:5672/vhost"
 
 type RabbitMQ struct {
 	conn    *amqp.Connection
@@ -50,7 +50,7 @@ func NewRabbitMQ(queueName, exchange, key string) *RabbitMQ {
 }
 
 /*
-	Simple模式：默认Exchange，不使用RoutingKey
+	Simple模式：默认Exchange，不使用RoutnigKey
 */
 // NewRabbitMQSimple 初始化Simple模式的RabbitMQ实例
 func NewRabbitMQSimple(queueName string) *RabbitMQ {
@@ -64,7 +64,7 @@ func (r *RabbitMQ) PublishSimple(message string) {
 		r.QueueName,
 		// 是否持久化
 		false,
-		// 当最后一个消费者退订后是否自动删除
+		// 是否自动删除
 		false,
 		// 是否具有排他性
 		false,
@@ -91,7 +91,7 @@ func (r *RabbitMQ) PublishSimple(message string) {
 		})
 }
 
-// ConsumeSimple simple模式消费者
+// ConsumeSimple simp le模式消费者
 func (r *RabbitMQ) ConsumeSimple() {
 	// 1.申请队列
 	_, err := r.channel.QueueDeclare(

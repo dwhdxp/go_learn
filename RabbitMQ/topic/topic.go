@@ -7,7 +7,7 @@ import (
 )
 
 // url地址：amqp://用户名:密码@IP地址:端口号/vhost
-const MQURL = "amqp://xp:123456@127.0.0.1:5672/dxp"
+const MQURL = "amqp://username:password@ip:5672/vhost"
 
 type RabbitMQ struct {
 	conn    *amqp.Connection
